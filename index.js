@@ -10,11 +10,15 @@ const io = new Server(server, {
   },
 });
 
+let LastTwentyMessages = [];
+
 io.on("connection", (socket) => {
   console.log("User connected: ", socket.id);
 
   socket.on("message", (msg) => {
     console.log("Message received: ", msg);
+    LastTwentyMessages.push(msg);
+    console.log(LastTwentyMessages);
     io.emit("message", msg); // Broadcast toall clients
   });
 
