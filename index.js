@@ -17,12 +17,8 @@ io.on("connection", (socket) => {
 
   socket.on("message", (msg) => {
     console.log("Message received: ", msg);
-    if (LastTwentyMessages.length >= 20) {
-      LastTwentyMessages.pop;
-    }
-    LastTwentyMessages.push(msg);
-    console.log(LastTwentyMessages);
-    io.emit("message", msg); // Broadcast toall clients
+
+    io.emit("message", msg); // Broadcast total clients
   });
 
   socket.on("disconnect", () => {
